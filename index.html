@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
+    <link rel="stylesheet" href="enhancements.css">
 
   </head>
   <body id="home">
+    <div id="preloader"><div class="loader-ring"></div></div>
+    <div id="scrollProgress"></div>
+    <div id="cursorDot"></div>
+    <div id="cursorRing"></div>
+
     <!-- Navbar -->
     <nav>
       <a href="#home" class="nav-brand">Belhart Rajesky Pasaribu</a>
@@ -42,6 +49,7 @@
 
     <!-- Hero Section -->
     <div class="header-all">
+      <canvas id="heroCanvas"></canvas>
       <div class="dip-header-text">
         <h1 class="header-text">Informatics student passionate about</h1>
         <h1 class="header-text-sec"></h1>
@@ -54,6 +62,14 @@
       <h2 class="sec-text-first">I care about how things work just as much as how they look. And when I step away from the screen, I draw</h2>
       <p class="sec-text-sec">I build things that work well and look even better</p>
     </div>
+
+    <div class="tech-marquee">
+  <div class="tech-track">
+    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span>
+    <span>PHP</span><span>React</span><span>Node.js</span><span>TensorFlow</span>
+    <span>GSAP</span><span>Three.js</span><span>Figma</span><span>Git</span>
+  </div>
+</div>
 
     <!-- About Card -->
     <div class="about gsap-reveal-scale" id="aboutweb">
@@ -425,6 +441,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
 
     <script src="script.js"></script>
+    <script src="enhancements.js"></script>
   </body>
 </html>
 
