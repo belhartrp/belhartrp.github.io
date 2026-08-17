@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belhart Rajesky Pasaribu — Informatics / AI Engineering / Digital Design</title>
+<meta name="description" content="Portfolio of Belhart Rajesky Pasaribu — Computer Science student focused on programming, AI engineering, and digital design." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body id="top">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="pre-count"><span id="preCountNum">0</span></div>
+    <div class="pre-label">ASSEMBLING STRUCTURE</div>
+  </div>
+
+  <!-- Custom cursor (desktop only, injected/controlled via JS) -->
+  <div id="cursorDot"></div>
+  <div id="cursorRing"></div>
+
+  <!-- Scroll progress -->
+  <div id="scrollProgress"><span></span></div>
+
+  <!-- Fixed 3D canvas layer (BACK) -->
+  <canvas id="scene"></canvas>
+
+  <!-- Fine grid overlay (decorative layer) -->
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header id="siteNav">
+    <a href="#top" class="nav-mark">BRP<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#journey" data-nav="journey">Journey</a>
+      <a href="#achievements" data-nav="achievements">Achievements</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+    <button id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#work">Work</a>
+    <a href="#journey">Journey</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+      <div class="hero-annot annot-tl">FIG. 01 — PORTRAIT</div>
+      <div class="hero-annot annot-tr" id="localTime">MEDAN, ID</div>
+
+      <div class="hero-grid">
+        <div class="hero-photo-wrap" data-parallax="0.15" data-aos="zoom-in" data-aos-delay="100">
+          <div class="hero-photo-frame">
+            <img src="/assets/profile.jpg" alt="Portrait of Belhart Rajesky Pasaribu" class="hero-photo" />
+            <svg class="hero-photo-crosshair" viewBox="0 0 100 100" aria-hidden="true">
+              <line x1="0" y1="50" x2="18" y2="50" /><line x1="82" y1="50" x2="100" y2="50" />
+              <line x1="50" y1="0" x2="50" y2="18" /><line x1="50" y1="82" x2="50" y2="100" />
+              <circle cx="50" cy="50" r="30" />
+            </svg>
+          </div>
+        </div>
+
+        <h1 class="hero-title" data-parallax="0.05">
+          <span class="line l1">Belhart</span>
+          <span class="line l2">Rajesky</span>
+          <span class="line l3">Pasaribu<span class="dot">.</span></span>
+        </h1>
+
+        <p class="hero-role" data-parallax="0.08" data-aos="fade-up" data-aos-delay="150">
+          Informatics student building at the intersection of<br class="br-d" />
+          <em>code</em>, <em>AI engineering</em> &amp; <em>digital design</em>.
+        </p>
+
+        <div class="hero-cta" data-aos="fade-up" data-aos-delay="250">
+          <a href="#work" class="link-cta" data-magnetic data-smooth>
+            <span>View Work</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#about" class="link-cta link-cta-ghost" data-magnetic data-smooth>
+            <span>Who I Am</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <span>SCROLL</span>
+        <div class="scroll-cue-line"></div>
+      </div>
+    </section>
+
+    <!-- ============ TECH MARQUEE ============ -->
+    <section class="marquee-sec" aria-label="Technologies">
+      <div class="marquee-track">
+        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span>
+        <span>PHP</span><span>React</span><span>Node.js</span><span>TensorFlow</span>
+        <span>GSAP</span><span>Three.js</span><span>Figma</span><span>Git</span>
+        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span>
+        <span>PHP</span><span>React</span><span>Node.js</span><span>TensorFlow</span>
+        <span>GSAP</span><span>Three.js</span><span>Figma</span><span>Git</span>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="about-sec">
+      <div class="about-annot">FIG. 02 — NOTES</div>
+      <div class="about-grid">
+        <p class="about-kicker" data-aos="fade-right">01 / ABOUT</p>
+        <blockquote class="about-quote" data-aos="fade-up" data-aos-delay="100">
+          “Build with code, design with intention, and create with curiosity.”
+        </blockquote>
+        <div class="about-body" data-aos="fade-up" data-aos-delay="200">
+          <p>
+            I'm Belhart, a Computer Science student passionate about programming, AI, and digital design. I enjoy exploring ideas from both technical and creative perspectives, turning them into things people can see, use, and experience. And when I need a break from code and screens, I go back to drawing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="work" class="work-sec">
+      <div class="work-heading">
+        <p class="section-kicker" data-aos="fade-right">02 / SELECTED WORK</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Things I've<br />built &amp; shipped.</h2>
+      </div>
+
+      <div class="work-list">
+
+        <article class="work-panel" data-index="01">
+          <div class="work-panel-media" data-aos="fade-right">
+            <img src="images/perceptron.jpeg" alt="Perceptron Real-Time preview" loading="lazy" />
+          </div>
+          <div class="work-panel-info" data-aos="fade-left">
+            <span class="work-num">01</span>
+            <h3>Perceptron Real-Time</h3>
+            <p class="work-tag">Deep Learning</p>
+            <p class="work-desc">A simple web-based application that demonstrates the Backpropagation algorithm in a neural network. Users can input training data, configure network parameters, and visualize how the model learns through forward and backward passes in real time.</p>
+            <ul class="work-tech"><li>JavaScript</li><li>MLP</li><li>Backpropagation</li></ul>
+            <div class="work-links">
+              <a href="https://github.com/belhartrp/simple-backpropagation-free" target="_blank" rel="noopener noreferrer" data-magnetic>Source Code →</a>
+              <a href="https://belhartrp.github.io/simple-backpropagation-free" target="_blank" rel="noopener noreferrer" data-magnetic>Live Demo →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-panel" data-index="02">
+          <div class="work-panel-media" data-aos="fade-left">
+            <img src="images/crud-cura.jpeg" alt="CRUD Cura preview" loading="lazy" />
+          </div>
+          <div class="work-panel-info" data-aos="fade-right">
+            <span class="work-num">02</span>
+            <h3>CRUD Cura</h3>
+            <p class="work-tag">Web Dev</p>
+            <p class="work-desc">A web-based application that allows users to monitor real-time traffic conditions and report traffic incidents or disasters directly from their location. Designed to support faster emergency response and informed decision-making through community-driven data.</p>
+            <ul class="work-tech"><li>JavaScript</li><li>React</li><li>Leaflet</li></ul>
+            <div class="work-links">
+              <a href="https://github.com/belhartrp/crud-cura" target="_blank" rel="noopener noreferrer" data-magnetic>Source Code →</a>
+              <a href="https://crud-cura.vercel.app" target="_blank" rel="noopener noreferrer" data-magnetic>Live Demo →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-panel" data-index="03">
+          <div class="work-panel-media" data-aos="fade-right">
+            <img src="images/qbot.jpeg" alt="Chatbot Quantum Bot preview" loading="lazy" />
+          </div>
+          <div class="work-panel-info" data-aos="fade-left">
+            <span class="work-num">03</span>
+            <h3>Chatbot — Quantum Bot</h3>
+            <p class="work-tag">NLP</p>
+            <p class="work-desc">An interactive web application featuring an AI chatbot that explains quantum physics concepts through a game-style dialog box interface.</p>
+            <ul class="work-tech"><li>Python</li><li>Flask</li><li>JavaScript</li><li>Classification</li></ul>
+            <div class="work-links">
+              <a href="https://github.com/belhartrp/tugas-chat-bot" target="_blank" rel="noopener noreferrer" data-magnetic>Source Code →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-panel" data-index="04">
+          <div class="work-panel-media" data-aos="fade-left">
+            <img src="images/cnn-kembaran.jpeg" alt="FaceMatch AI preview" loading="lazy" />
+          </div>
+          <div class="work-panel-info" data-aos="fade-right">
+            <span class="work-num">04</span>
+            <h3>FaceMatch AI (CNN)</h3>
+            <p class="work-tag">Deep Learning</p>
+            <p class="work-desc">A web-based face matching application powered by Convolutional Neural Network (CNN) that analyzes and compares facial features to find the most similar face from an uploaded image.</p>
+            <ul class="work-tech"><li>CNN</li><li>JavaScript</li><li>TensorFlow</li><li>Flask</li></ul>
+            <div class="work-links">
+              <a href="https://belhartrp.github.io/lopp-yuu-guys" target="_blank" rel="noopener noreferrer" data-magnetic>Source Code →</a>
+              <a href="https://belhartrp.github.io/lopp-yuu-guys" target="_blank" rel="noopener noreferrer" data-magnetic>Live Demo →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-panel" data-index="05">
+          <div class="work-panel-media" data-aos="fade-right">
+            <img src="images/Keppo.png" alt="Keppo preview" loading="lazy" />
+          </div>
+          <div class="work-panel-info" data-aos="fade-left">
+            <span class="work-num">05</span>
+            <h3>Keppo</h3>
+            <p class="work-tag">Web Dev</p>
+            <p class="work-desc">A web-based Instagram follower analysis platform designed to visualize account relationships through follower and following data. Using automated data processing, Keppo identifies mutual connections, non-followers, fans, followers, and following lists.</p>
+            <ul class="work-tech"><li>Instagram</li><li>JavaScript</li><li>JSZIP</li><li>XLSX</li></ul>
+            <div class="work-links">
+              <a href="https://belhartrp.github.io/lopp-yuu-guys" target="_blank" rel="noopener noreferrer" data-magnetic>Source Code →</a>
+              <a href="https://belhartrp.github.io/instagram-analyzer" target="_blank" rel="noopener noreferrer" data-magnetic>Live Demo →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY (Qualification) ============ -->
+    <section id="journey" class="journey-sec">
+      <div class="work-heading">
+        <p class="section-kicker" data-aos="fade-right">03 / JOURNEY</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Education &amp;<br />experience.</h2>
+      </div>
+
+      <div class="timeline-wrap">
+        <div class="timeline-rail"><div class="timeline-fill" id="timelineFill"></div></div>
+
+        <div class="timeline-track">
+
+          <div class="tl-item" data-type="EDU" data-aos="fade-left">
+            <span class="tl-badge">EDU</span>
+            <span class="tl-year">2022 — Present</span>
+            <h4>S1 Informatics Engineering</h4>
+            <p class="tl-place">Unika Santo Thomas Medan</p>
+            <p class="tl-desc">Focusing on programming, AI engineering, machine learning, and software development. Currently completing thesis on disaster status classification.</p>
+          </div>
+
+          <div class="tl-item" data-type="EXP" data-aos="fade-right">
+            <span class="tl-badge">EXP</span>
+            <span class="tl-year">July – August 2025</span>
+            <h4>Data Management Intern</h4>
+            <p class="tl-place">PT. Telkom Akses — Sumatera</p>
+            <p class="tl-desc">Handled data management operations during internship, gaining hands-on experience in enterprise data handling and telecommunication industry workflows.</p>
+          </div>
+
+          <div class="tl-item" data-type="EXP" data-aos="fade-left">
+            <span class="tl-badge">EXP</span>
+            <span class="tl-year">2025</span>
+            <h4>Teaching Assistant</h4>
+            <p class="tl-place">Unika Santo Thomas Medan</p>
+            <p class="tl-desc">Assisted lecturers in two courses — Object-Based Software Engineering, and Cryptography &amp; Steganography.</p>
+          </div>
+
+          <div class="tl-item" data-type="EXP" data-aos="fade-right">
+            <span class="tl-badge">EXP</span>
+            <span class="tl-year">2025 — Present</span>
+            <h4>Student Executive Board (BEM)</h4>
+            <p class="tl-place">BEM FIKOM — Unika Santo Thomas</p>
+            <p class="tl-desc">Managing social media content, documentation, and visual communication for the faculty student organization.</p>
+          </div>
+
+          <div class="tl-item" data-type="EDU" data-aos="fade-left">
+            <span class="tl-badge">EDU</span>
+            <span class="tl-year">2019 — 2022</span>
+            <h4>Senior High School</h4>
+            <p class="tl-place">SMAN 15 Medan</p>
+            <p class="tl-desc">Science major. Developed early interest in computers, logic, and digital design.</p>
+          </div>
+
+          <div class="tl-item" data-type="EDU" data-aos="fade-right">
+            <span class="tl-badge">EDU</span>
+            <span class="tl-year">2016 — 2019</span>
+            <h4>Junior High School</h4>
+            <p class="tl-place">SMPN 30 Medan</p>
+            <p class="tl-desc">Built foundational knowledge in mathematics and natural sciences.</p>
+          </div>
+
+          <div class="tl-item" data-type="EDU" data-aos="fade-left">
+            <span class="tl-badge">EDU</span>
+            <span class="tl-year">2010 — 2016</span>
+            <h4>Elementary School</h4>
+            <p class="tl-place">SDN 021 Medan Sunggal</p>
+            <p class="tl-desc">Established core academic skills in literacy, numeracy, and critical thinking.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACHIEVEMENTS ============ -->
+    <section id="achievements" class="ach-sec">
+      <div class="work-heading">
+        <p class="section-kicker" data-aos="fade-right">04 / ACHIEVEMENTS</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Certificates &amp;<br />courses.</h2>
+      </div>
+
+      <div class="ach-gallery" id="achGallery">
+        <div class="ach-doc" data-aos="zoom-in">
+          <div class="ach-doc-img"><img src="images/ibm-certi.jpg" alt="Certificate — IBM SkillsBuild" loading="lazy" /></div>
+          <div class="ach-doc-meta">
+            <span class="ach-doc-badge">IBM</span>
+            <h4>Code Generation &amp; Optimization Using IBM Granite</h4>
+            <p>IBM SkillsBuild · August 2025</p>
+            <a href="#" class="ach-doc-link" target="_blank" rel="noopener noreferrer" data-magnetic>View Certificate →</a>
+          </div>
+        </div>
+        <div class="ach-doc" data-aos="zoom-in" data-aos-delay="100">
+          <div class="ach-doc-img"><img src="images/web-design.jpeg" alt="Certificate — Web Design Competition" loading="lazy" /></div>
+          <div class="ach-doc-meta">
+            <span class="ach-doc-badge">Fikom Famz</span>
+            <h4>3rd Place — Web Design Competition</h4>
+            <p>FIKOM Famz Event-3 2025 · July 2025</p>
+            <a href="#" class="ach-doc-link" target="_blank" rel="noopener noreferrer" data-magnetic>View Certificate →</a>
+          </div>
+        </div>
+        <div class="ach-doc" data-aos="zoom-in" data-aos-delay="200">
+          <div class="ach-doc-img"><img src="images/ibmdua.jpg" alt="Certificate — IBM Granite for Software Development" loading="lazy" /></div>
+          <div class="ach-doc-meta">
+            <span class="ach-doc-badge">IBM</span>
+            <h4>IBM Granite Models for Software Development</h4>
+            <p>IBM SkillsBuild · August 2025</p>
+            <a href="#" class="ach-doc-link" target="_blank" rel="noopener noreferrer" data-magnetic>View Certificate →</a>
+          </div>
+        </div>
+        <div class="ach-doc" data-aos="zoom-in" data-aos-delay="300">
+          <div class="ach-doc-img"><img src="images/ibmsatu.jpg" alt="Certificate — IBM SkillsBuild" loading="lazy" /></div>
+          <div class="ach-doc-meta">
+            <span class="ach-doc-badge">IBM</span>
+            <h4>Code Generation &amp; Optimization Using IBM Granite</h4>
+            <p>IBM SkillsBuild · August 2025</p>
+            <a href="#" class="ach-doc-link" target="_blank" rel="noopener noreferrer" data-magnetic>View Certificate →</a>
+          </div>
+        </div>
+      </div>
+      <p class="ach-hint">← drag / scroll →</p>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER / CONTACT ============ -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-annot">FIG. 05 — CONTACT</div>
+    <h2 class="footer-title" data-aos="fade-up">Let's build<br />something.</h2>
+    <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+      <a href="https://github.com/belhartrp" target="_blank" rel="noopener noreferrer" data-magnetic>GitHub</a>
+      <a href="mailto:belhartrpb@gmail.com" data-magnetic>Email</a>
+      <a href="https://www.linkedin.com/in/belhart-rajesky-pasaribu-8709a536b" target="_blank" rel="noopener noreferrer" data-magnetic>LinkedIn</a>
+      <a href="https://wa.me/6282274316435" target="_blank" rel="noopener noreferrer" data-magnetic>WhatsApp</a>
+      <a href="https://www.instagram.com/belhart.rp" target="_blank" rel="noopener noreferrer" data-magnetic>Instagram</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Belhart Rajesky Pasaribu</span>
+      <span>Medan, North Sumatra, Indonesia</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

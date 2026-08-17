@@ -9,16 +9,6 @@
   const isTouch = window.matchMedia('(hover: none)').matches || window.innerWidth < 900;
   const isSmall = window.innerWidth < 700;
 
-  /* ============ AOS — REVEAL ON SCROLL (WITH REVERSE) ============ */
-  AOS.init({
-    once: false,       // replay every time an element enters view
-    mirror: true,       // also animate (in reverse) when scrolling back up
-    duration: prefersReduced ? 1 : 750,
-    easing: 'ease-out-cubic',
-    offset: 60,
-    anchorPlacement: 'top-bottom'
-  });
-
   /* ============ PRELOADER ============ */
   const preloader = document.getElementById('preloader');
   const preCountNum = document.getElementById('preCountNum');
@@ -33,7 +23,6 @@
         preloader.classList.add('done');
         document.body.style.overflow = '';
         if (window.gsap) runHeroIntro();
-        AOS.refreshHard();
       }, 300);
     }
   }, 90);
@@ -44,49 +33,18 @@
   let lenis = null;
   if (!prefersReduced && window.Lenis) {
     lenis = new Lenis({ lerp: 0.11, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger ? ScrollTrigger.update : undefined);
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }
 
   /* ============ GSAP SETUP ============ */
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  gsap.registerPlugin(ScrollTrigger);
   if (lenis) {
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
   }
-  // Keep AOS in sync with Lenis-driven scroll (AOS listens to native scroll by default)
-  if (lenis) { lenis.on('scroll', () => AOS.refresh()); }
-
-  /* ============ SMOOTH ANCHOR NAVIGATION (no instant jumps) ============ */
-  const NAV_OFFSET = 84; // fixed header height + breathing room
-  function smoothScrollTo(target) {
-    if (!target) return;
-    if (lenis) {
-      lenis.scrollTo(target, {
-        offset: -NAV_OFFSET,
-        duration: 1.35,
-        easing: (t) => 1 - Math.pow(1 - t, 4)
-      });
-    } else {
-      const y = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-      gsap.to(window, { duration: 1.1, scrollTo: { y }, ease: 'power3.inOut' });
-    }
-  }
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (!href || href === '#') return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      smoothScrollTo(target);
-      // close mobile menu if open
-      mobileMenu.classList.remove('open');
-      menuToggle.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
 
   /* ============ SCROLL PROGRESS BAR ============ */
   const progressSpan = document.querySelector('#scrollProgress span');
@@ -132,6 +90,11 @@
     menuToggle.setAttribute('aria-expanded', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
+  mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuToggle.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
 
   /* ============ CUSTOM CURSOR ============ */
   if (!isTouch) {
@@ -181,16 +144,37 @@
     });
   }
 
+  /* ============ GSAP SCROLL REVEALS ============ */
+  gsap.utils.toArray('.gsap-reveal').forEach((el) => {
+    gsap.from(el, {
+      opacity: 0, y: 34, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.gsap-reveal-left').forEach((el) => {
+    gsap.from(el, {
+      opacity: 0, x: -40, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.gsap-reveal-right').forEach((el) => {
+    gsap.from(el, {
+      opacity: 0, x: 40, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+    });
+  });
+
   /* ============ HERO INTRO TIMELINE ============ */
   function runHeroIntro() {
     gsap.set('.hero-title .line', { yPercent: 110, opacity: 0 });
     gsap.set('.hero-photo-frame', { opacity: 0, scale: 0.92 });
-    gsap.set('.hero-annot', { opacity: 0, y: 16 });
+    gsap.set('.hero-role, .hero-cta, .hero-annot', { opacity: 0, y: 16 });
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
     tl.to('.hero-title .line', { yPercent: 0, opacity: 1, duration: 1, stagger: 0.09 })
       .to('.hero-photo-frame', { opacity: 1, scale: 1, duration: 1 }, 0.15)
+      .to('.hero-role', { opacity: 1, y: 0, duration: 0.8 }, 0.55)
+      .to('.hero-cta', { opacity: 1, y: 0, duration: 0.8 }, 0.7)
       .to('.hero-annot', { opacity: 1, y: 0, duration: 0.7 }, 0.9);
-    // hero-role / hero-cta are handled by AOS (data-aos on those elements)
   }
 
   /* ============ WORK PANEL TILT (desktop) ============ */
@@ -367,7 +351,7 @@
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { onResize(); AOS.refresh(); }, 150);
+    resizeTimer = setTimeout(onResize, 150);
   });
 
   const clock = new THREE.Clock();

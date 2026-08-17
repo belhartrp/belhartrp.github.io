@@ -127,33 +127,23 @@ section{ position:relative; z-index:2; }
 #menuToggle{
   display:none; flex-direction:column; justify-content:center; align-items:flex-end;
   gap:6px; width:36px; height:36px; background:none; border:none; cursor:pointer;
-  z-index:1002;
 }
 #menuToggle span{ display:block; width:100%; height:1.5px; background:var(--ink); transition:all .3s var(--ease); }
 #menuToggle.open span:nth-child(1){ transform:translateY(3.75px) rotate(45deg); }
 #menuToggle.open span:nth-child(2){ transform:translateY(-3.75px) rotate(-45deg); width:100%; }
 
 #mobileMenu{
-  position:fixed; inset:0; z-index:995; background:var(--paper);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:6px; padding:0 32px;
-  transform:translateY(-100%); transition:transform .55s var(--ease);
+  position:fixed; inset:0; z-index:990; background:var(--paper);
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  gap:8px; padding:0 32px;
+  transform:translateY(-100%); transition:transform .5s var(--ease);
 }
 #mobileMenu.open{ transform:translateY(0); }
 #mobileMenu a{
-  font-family:var(--display); font-size:clamp(28px,9vw,42px); font-weight:600;
-  color:var(--ink); padding:12px 0; text-align:center;
-  width:100%; max-width:320px;
-  opacity:0; transform:translateY(14px);
-  transition:opacity .5s var(--ease), transform .5s var(--ease);
+  font-family:var(--display); font-size:clamp(32px,10vw,48px); font-weight:600;
+  color:var(--ink); padding:10px 0; border-bottom:1px solid var(--line);
+  width:100%;
 }
-#mobileMenu.open a{ opacity:1; transform:translateY(0); }
-#mobileMenu.open a:nth-child(1){ transition-delay:.08s; }
-#mobileMenu.open a:nth-child(2){ transition-delay:.14s; }
-#mobileMenu.open a:nth-child(3){ transition-delay:.2s; }
-#mobileMenu.open a:nth-child(4){ transition-delay:.26s; }
-#mobileMenu.open a:nth-child(5){ transition-delay:.32s; }
-#mobileMenu.open a:nth-child(6){ transition-delay:.38s; }
 
 /* ===================== HERO ===================== */
 .hero{
@@ -472,10 +462,11 @@ section{ position:relative; z-index:2; }
   padding-top:20px; border-top:1px solid rgba(243,241,234,.15);
 }
 
-/* ===================== MAGNETIC ===================== */
+/* ===================== MAGNETIC / REVEAL BASE STATES ===================== */
 [data-magnetic]{ display:inline-flex; will-change:transform; }
+.gsap-reveal,.gsap-reveal-left,.gsap-reveal-right{ will-change:transform, opacity; }
 
-/* ===================== RESPONSIVE — TABLET ===================== */
+/* ===================== RESPONSIVE ===================== */
 @media (max-width:1024px){
   .hero-grid{ row-gap:32px; }
   .hero-title{ grid-column:1/13; }
@@ -486,64 +477,14 @@ section{ position:relative; z-index:2; }
   .about-quote{ max-width:none; }
 }
 
-/* ===================== RESPONSIVE — MOBILE ===================== *
-   Reference direction: centered composition (à la Alvalens) —
-   circular framed portrait, center-aligned name/role, stacked
-   full-width pill CTAs, generous vertical rhythm.
-   ============================================================ */
 @media (max-width:900px){
   .nav-links{ display:none; }
   #menuToggle{ display:flex; }
-
-  .hero{ padding-top:calc(var(--nav-h) + 12px); min-height:auto; padding-bottom:60px; }
-  .hero-annot{ font-size:9px; }
-  .annot-tl{ top:88px; left:20px; }
-  .annot-tr{ top:88px; right:20px; }
-
-  .hero-grid{
-    grid-template-columns:1fr;
-    justify-items:center;
-    text-align:center;
-    row-gap:22px;
-    padding:0 24px;
-  }
-  .hero-photo-wrap{ grid-column:1; grid-row:1; justify-self:center; margin-top:12px; }
-  .hero-photo-frame{
-    width:clamp(140px,42vw,190px);
-    aspect-ratio:1/1;
-    border-radius:50%;
-    overflow:hidden;
-  }
-  .hero-photo{ border-radius:50%; border:1px solid var(--line-strong); }
-  .hero-photo-crosshair{ display:none; }
-
-  .hero-title{ grid-column:1; grid-row:2; font-size:clamp(38px,11vw,56px); text-align:center; }
-  .hero-role{ grid-column:1; grid-row:3; text-align:center; max-width:34ch; margin:0 auto; }
-  .hero-cta{
-    grid-column:1; grid-row:4; flex-direction:column; align-items:center;
-    width:100%; gap:14px; margin-top:8px;
-  }
-  .link-cta{
-    justify-content:center; width:100%; max-width:320px;
-    border:1px solid var(--ink); border-radius:999px; padding:15px 24px;
-  }
-  .link-cta-ghost{ border-color:var(--line-strong); }
-  .scroll-cue{ display:none; }
-
-  .about-annot{ display:none; }
-  .about-grid{ grid-template-columns:1fr; text-align:center; }
-  .about-kicker{ grid-column:1; justify-self:center; }
-  .about-quote{ grid-column:1; max-width:26ch; margin:16px auto 28px; }
-  .about-body{ grid-column:1; }
-  .about-body p{ margin:0 auto; text-align:left; }
-
   .work-panel,.work-panel:nth-child(even){
-    grid-template-columns:1fr; gap:22px;
+    grid-template-columns:1fr; gap:24px;
   }
   .work-panel:nth-child(even) .work-panel-media,
   .work-panel:nth-child(even) .work-panel-info{ order:initial; }
-  .work-links{ flex-direction:column; gap:14px; }
-
   .timeline-rail{ left:16px; }
   .timeline-fill{ left:0; }
   .tl-item, .timeline-track .tl-item:nth-child(odd), .timeline-track .tl-item:nth-child(even){
@@ -551,20 +492,20 @@ section{ position:relative; z-index:2; }
   }
   .tl-item::before{ left:11px !important; right:auto !important; }
   .timeline-track .tl-item:nth-child(odd) .tl-desc{ margin-left:0; }
-
-  .footer-title{ text-align:center; }
-  .footer-links{ justify-content:center; }
-  .footer-bottom{ flex-direction:column; text-align:center; align-items:center; }
 }
 
 @media (max-width:640px){
-  .ach-doc{ flex-basis:80vw; }
-  .section-title{ text-align:left; }
+  .hero-annot{ font-size:9px; }
+  .annot-tl{ top:92px; }
+  .annot-tr{ top:92px; }
+  .hero-photo-frame{ width:150px; }
+  .about-annot{ display:none; }
+  .footer-bottom{ flex-direction:column; }
+  .ach-doc{ flex-basis:78vw; }
 }
 
 @media (max-width:480px){
-  .hero-photo-frame{ width:150px; }
-  .hero-title{ font-size:clamp(34px,12vw,44px); }
+  .hero-cta{ flex-direction:column; gap:14px; }
 }
 
 /* Prevent horizontal scroll globally */
